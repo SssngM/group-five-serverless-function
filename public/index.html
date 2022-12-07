@@ -1,68 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Group Five!</title>
-  </head>
-  <body>
-    <!-- <h1>Up and Running with Serverless Functions</h1>
-    <button id="fetch-btn">Fetch</button>
-    <p id="response-output">Response Placeholder</p> -->
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Group Five</title>
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+	<body>
+    <header>
+      <div class="outer-full-half">
+        <img class="logo-left" src="./images/logo1.png" />
+        <img class="logo-right" src="./images/logo2.png" />
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="outer-full-half dynamic landing on-phone-shift-up">
+          <div class="inner-half-half">
+            <h2 class="tagline-left">When you want to go out but not on a date</h2>
+          </div>
+          <div class="inner-half-half">
+            <h3 class="tagline-right">Matched dinner in a small group</h3>
+            <div>
+              <button 
+                class="btn-full"
+                onclick="window.location.href='./betaform.html';"
+              >
+                Join the Beta
+              </button>
+            </div>
+          </div>
+        </div>
 
-    <!-- <form name="contact" method="POST" data-netlify="true">
-      <p>
-        <label>Your Name: <input type="text" name="name" /></label>
-      </p>
-      <p>
-        <label>Your Email: <input type="email" name="email" /></label>
-      </p>
-        <button type="submit">Send</button>
-      </p>
-    </form> -->
-
-    <form name="contact" method="POST" data-netlify="true">
-      <p>
-        <label>Your Name: <input type="text" name="name" /></label>
-      </p>
-      <p>
-        <label>Your Email: <input type="email" name="email" /></label>
-      </p>
-      <p>
-        <label
-          >Your Role:
-          <select name="role[]" multiple>
-            <option value="leader">Leader</option>
-            <option value="follower">Follower</option>
-          </select></label
-        >
-      </p>
-      <p>
-        <label>Message: <textarea name="message"></textarea></label>
-      </p>
-      <p>
-        <button type="submit">Send</button>
-      </p>
-    </form>
-
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const fetchBtn = document.getElementById("fetch-btn");
-        const responseText = document.getElementById("response-output");
-
-        // fetchBtn.addEventListener("click", () => {
-        //   responseText.innerText = "Static Text Replacement";
-        // });
-        fetchBtn.addEventListener("click", async () => {
-          const response = await fetch("/.netlify/functions/hello-world").then(
-            (response) => response.json()
-          );
-
-          responseText.innerText = JSON.stringify(response);
-          console.log(response);
-        });
-      });
-    </script> -->
+      </section>
+    </main>
   </body>
+  <script src="app.js"></script>
 </html>
