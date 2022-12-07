@@ -1,0 +1,281 @@
+ul,ol { list-style: none; }
+a img,:link img,:visited img, fieldset { border: none; }
+button { cursor: pointer; }
+html, body, h1, h2, h3, h4, div, p {
+	margin: 0;
+	padding: 0; 
+}
+
+/* ******************************************************************************** */
+/* Full screen */
+/* ******************************************************************************** */
+
+body {
+  color: #F02FA3;
+  background: #393FD6;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+  font-weight: 100;
+}
+
+button {
+  background-color: #F02FA3;
+  border-radius: 10px;
+  border: 2px solid #4E4343;
+  color: #4E4343;
+  font-size: 2em;
+  font-weight: bold;
+  box-shadow: 6px 6px #F02FA3;
+  height: 2em;
+}
+
+.outer-full {
+  width: 80vw;
+  margin: 10vh 10vw;
+  justify-content: space-between;
+}
+
+.outer-full-half {
+  width: 80vw;
+  height: 40vh;
+  margin: 10vh 10vw;
+  justify-content: space-between;
+  display: flex;
+}
+
+.inner-full {
+  width: 100%;
+  margin-bottom: 2em;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.inner-half-half {
+  width: 50%
+  display: inline-block;
+  margin-bottom: 2em;
+}
+
+.btn-full {
+  min-width: 8em;; 
+}
+
+.btn-half {
+  min-width: 5em;; 
+}
+
+.logo-left {
+  height: 90%;
+}
+
+.logo-right {
+  height: 40%;
+}
+
+.tagline-left {
+  width: 50%;
+}
+
+.tagline-right {
+  width: 10em;
+  margin-bottom: 2em;
+}
+
+/* ------------------------------------------------------------ */
+/* full screen betaform */
+/* ------------------------------------------------------------ */
+
+
+.question-title {
+  text-align: center;
+}
+
+.question1 {
+  justify-content: center;
+  display: flex;
+  gap: 10%;
+}
+
+.sub-question1 {
+  width: 25%;
+  max-width: 14em;
+}
+
+.box-input-label {
+  /* text-align: center; */
+  position: relative;
+  top: 3em;
+}
+
+.box-input {
+  cursor: pointer;
+  height: 8em;
+  border: 3px solid #F02FA3;
+  margin: 10px;
+  border-radius: 5px;
+  /* box-shadow: 6px 6px #F02FA3; */
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 800px) {
+  .question1 {
+    display: flex;
+    text-align: center;
+  }
+}
+
+
+/* ******************************************************************************** */
+/* Half screen */
+/* ******************************************************************************** */
+
+@media (max-width: 800px) {
+  .outer-full {
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+  }
+
+  .dynamic {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+  } 
+
+  .logo-left {
+    height: 60%;
+  }
+
+  .logo-right {
+    height: 20%;
+  }
+
+  .tagline-left {
+    width: 100%;
+  }
+
+  .tagline-right {
+    display: inline-block;
+  }
+
+  .on-phone-shift-up {
+    position: relative;
+    top: -4em;
+  }
+
+  /* ------------------------------------------------------------ */
+  /* half screen betaform */
+  /* ------------------------------------------------------------ */
+
+  .question1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sub-question1 {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+/* body { */
+/*   color: #F02FA3; */
+/*   position: relative; */
+/*   background: #393FD6; */
+/*   height: 100vh; */
+/* } */
+
+/* section { */
+/*   box-sizing: border-box; */
+/* } */
+
+/* main { */
+/*   font-family: Arial, Helvetica, sans-serif; */
+/* } */
+
+/* h1 { */
+/*   font-size: 2.6em; */
+/* } */
+
+/* h2 { */
+/*   font-size: 2em; */
+/*   font-weight: 100; */
+/*   letter-spacing: 1px; */
+/* } */
+
+/* header { */
+/*   width: 100vw; */
+/*   height: 50vh; */
+/* } */
+
+/* .taglines { */
+/*   width: 100vw; */
+/*   height: 50vh; */
+/* } */
+
+/* .tagline-left { */
+/*   width: 35vh; */
+/*   position: absolute; */
+/*   left: 20vh; */
+/*   top: 65vh; */
+/* } */
+
+/* .tagline-right { */
+/*   width: 35vh; */
+/*   position: absolute; */
+/*   right: 25vh; */
+/*   top: 60vh; */
+/* } */
+
+/* .logo-left { */
+/*   width: 30vh; */
+/*   position: absolute; */
+/*   top: 10vh; */
+/*   left: 20vh; */
+/* } */
+
+/* .logo-right { */
+/*   width: 20vh; */
+/*   position: absolute; */
+/*   top: 15vh; */
+/*   right: 25vh; */
+/* } */
+
+/* button { */
+/*   top: 75vh; */
+/*   background-color: #F02FA3; */
+/*   border-radius: 10px; */
+/*   border: 2px solid #4E4343; */
+/*   color: #4E4343; */
+/*   font-size: 2.2em; */
+/*   font-weight: bold; */
+/*   box-shadow: 6px 6px #F02FA3; */
+/* } */
+
+/* .btn1 { */
+/*   width: 35vh; */ 
+/*   height: 10vh; */
+/*   position: absolute; */
+/*   right: 25vh; */
+/* } */
