@@ -187,18 +187,12 @@ input[type="checkbox"] {
   /* half screen betaform */
   /* ------------------------------------------------------------ */
 
-  .question1 {
+  .question {
     flex-direction: column;
     align-items: center;
   }
   
-  .sub-question1 {
+  .sub-question {
     width: 100%;
   }
 }
-
-
-
-
-
-
