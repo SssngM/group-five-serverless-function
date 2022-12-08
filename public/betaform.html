@@ -18,32 +18,34 @@
         <section>
           <div class="outer-full on-phone-shift-up">
             <div class="inner-full">
-              <div class="question-title"><h1>Choose Two</h1></div>
+              <div class="question-title">
+                <h1>Choose Two <span id="section1Checkmark">✅<span></h1>
+              </div>
             </div>
           
             <div class="inner-full">
-              <div class="question1">
+              <div class="question">
 
-                <div class="sub-question1">
+                <div class="sub-question">
                   <label><h4 class="box-input-label">Adventure</h4>
                     <div class="box-input" id="box1">
-                      <input type="checkbox" name="adventure" />
+                      <input type="checkbox" name="adventure" hidden />
                     </div>
                   </label>
                 </div>
 
-                <div class="sub-question1">
+                <div class="sub-question">
                   <label><h4 class="box-input-label">Wealth</h4>
                     <div class="box-input" id="box2">
-                      <input type="checkbox" name="wealth" />
+                      <input type="checkbox" name="wealth" hidden />
                     </div>
                   </label>
                 </div>
 
-                <div class="sub-question1">
+                <div class="sub-question">
                   <label><h4 class="box-input-label">Relationships</h4>
                     <div class="box-input" id="box3">
-                      <input type="checkbox" name="relationships" />
+                      <input type="checkbox" name="relationships" hidden />
                     </div>
                   </label>
                 </div>
@@ -54,14 +56,16 @@
           </div>
         </section>
 
-        <section>
+        <section id="section2">
           <div class="outer-full on-phone-shift-up">
             <div class="inner-full">
-              <div class="question-title"><h1>Choose Three</h1></div>
+              <div class="question-title">
+                <h1>Choose Three <span id="section2Checkmark">✅<span></h1>
+              </div>
             </div>
 
             <div class="inner-full">
-              <div class="question1">
+              <div class="question">
                 <div class="subquestion">
                   <label>
                     <h3>
@@ -127,14 +131,16 @@
               </div>
             </div>
         </section>
-        <section>
+        <section id="section3">
           <div class="outer-full on-phone-shift-up">
             <div class="inner-full">
-              <div class="question-title"><h1>Choose Three</h1></div>
+              <div class="question-title">
+                <h1>Choose Three <span id="section3Checkmark">✅<span></h1>
+              </div>
               <p>(specific dates will be confirmed later)</p>
             </div>
 
-            <div class="question1">
+            <div class="question">
               <div class="subquestion">
                 <label>
                   <h3>
@@ -200,6 +206,7 @@
               <input type="email" name="email" class="email-input" value="" />
             </label>
             <button class="btn2">Done</button>
+            <p id="validation-message">(please complete the required fields)</p>
           </div>
         </section>     
       </form>
