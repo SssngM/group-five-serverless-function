@@ -1,7 +1,9 @@
+
+
 ul,ol { list-style: none; }
 a img,:link img,:visited img, fieldset { border: none; }
 button { cursor: pointer; }
-html, body, h1, h2, h3, h4, div, p {
+html, body, h1, h2, h3, h4, p {
 	margin: 0;
 	padding: 0; 
 }
@@ -58,7 +60,7 @@ button {
 }
 
 .inner-half-half {
-  width: 50%
+  width: 50%;
   display: inline-block;
   margin-bottom: 2em;
 }
@@ -95,6 +97,7 @@ button {
 
 .question-title {
   text-align: center;
+  padding-top: 5%;
 }
 
 .question1 {
@@ -111,7 +114,8 @@ button {
 .box-input-label {
   /* text-align: center; */
   position: relative;
-  top: 3em;
+  top: 5em;
+  font-size: 1.5em;
 }
 
 .box-input {
@@ -126,6 +130,11 @@ button {
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
+  margin-top: 20%;
+}
+input[type="email"] {
+  padding: 0 3%;
+  margin-left: 3%;
 }
 
 @media (min-width: 800px) {
@@ -142,6 +151,7 @@ input[type="checkbox"] {
 
 @media (max-width: 800px) {
   .outer-full {
+    margin-top:10%;
   }
 
   h2 {
@@ -173,7 +183,6 @@ input[type="checkbox"] {
   .tagline-right {
     display: inline-block;
   }
-
   .on-phone-shift-up {
     position: relative;
     top: -4em;
@@ -194,7 +203,10 @@ input[type="checkbox"] {
 }
 
 
-
+section .form-finish  {
+  text-align: center;
+  margin: 12% 0 10% 0;
+}
 
 
 
