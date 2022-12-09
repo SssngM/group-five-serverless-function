@@ -53,7 +53,6 @@ button {
 .inner-full {
   width: 100%;
   margin-bottom: 2em;
-  /* justify-content: center; */
   text-align: center;
 }
 
@@ -112,7 +111,6 @@ button {
 }
 
 .box-input-label {
-  /* text-align: center; */
   position: relative;
   top: 3em;
 }
@@ -123,12 +121,31 @@ button {
   border: 3px solid #F02FA3;
   margin: 10px;
   border-radius: 5px;
-  /* box-shadow: 6px 6px #F02FA3; */
 }
 
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
+}
+
+.input {
+  height: 40px;
+  width: 300px;
+  border-radius: 6px;
+  border: none;
+  font-size: 20px;
+  text-indent: 6px;
+}
+
+.btn2 {
+  width: 150px;
+  height: 50px;
+  position: relative;
+  top: 6px;
+}
+
+.validation-message {
+  margin-top: 25px;
 }
 
 @media (min-width: 800px) {
@@ -194,5 +211,22 @@ input[type="checkbox"] {
   
   .sub-question {
     width: 100%;
+  }
+
+  .input {
+    height: 30px;
+    width: 200px;
+  }
+
+  .btn2 {
+    width: 70px;
+    height: 40px;
+    position: relative;
+    top: 0;
+    font-size: 20px;
+  }
+
+  button {
+    box-shadow: 4px 4px #F02FA3;
   }
 }
