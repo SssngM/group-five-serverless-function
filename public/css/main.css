@@ -24,6 +24,7 @@ h3 {
 }
 
 button {
+  position:relative;
   background-color: #F02FA3;
   border-radius: 10px;
   border: 2px solid #4E4343;
