@@ -5,7 +5,6 @@ let question1State = [];
 const $box1 = document.querySelector("#box1");
 const $box2 = document.querySelector("#box2");
 const $box3 = document.querySelector("#box3");
-const $question1ValidCheckmark = document.querySelector('#section1Checkmark');
 
 $box1.addEventListener("click", (evt) => processQuestion1(evt));
 $box2.addEventListener("click", (evt) => processQuestion1(evt));
@@ -27,7 +26,6 @@ function processQuestion1(evt) {
     parent.style["box-shadow"] = "none";
 
     question1State = question1State.filter(([curCheckbox]) => curCheckbox !== checkbox);
-    $question1ValidCheckmark.style["visibility"] = "hidden";
   }
 
   function markCheckbox(checkbox, parent) {
@@ -43,8 +41,6 @@ function processQuestion1(evt) {
       checkbox.checked = true;
       parent.style["box-shadow"] = "10px 10px #F02FA3";
     });
-
-    if (question1State.length === 2) $question1ValidCheckmark.style["visibility"] = "initial";
   }
 }
 
@@ -54,7 +50,6 @@ function processQuestion1(evt) {
 let question2State = [];
 const $section2 = document.querySelector("#section2");
 $section2.addEventListener("click", (evt) => processQuestion2(evt.target));
-const $question2ValidCheckmark = document.querySelector('#section2Checkmark');
 
 function processQuestion2(curTarget) {
   const checkbox = curTarget.closest('input');
@@ -69,8 +64,6 @@ function processQuestion2(curTarget) {
   function unmarkCheckbox(checkbox) {
     checkbox.checked = false;
     question2State = question2State.filter(curCheckbox => curCheckbox !== checkbox);
-
-    $question2ValidCheckmark.style["visibility"] = "hidden";
   }
 
   function markCheckbox(checkbox) {
@@ -84,8 +77,6 @@ function processQuestion2(curTarget) {
     question2State.forEach((checkbox) => {
       checkbox.checked = true;
     });
-
-    if (question2State.length === 3) $question2ValidCheckmark.style["visibility"] = "initial";
   }
 }
 
@@ -94,7 +85,6 @@ function processQuestion2(curTarget) {
 let question3State = [];
 const $section3 = document.querySelector("#section3");
 $section3.addEventListener("click", (evt) => processQuestion3(evt.target));
-const $question3ValidCheckmark = document.querySelector('#section3Checkmark');
 
 function processQuestion3(curTarget) {
   const checkbox = curTarget.closest('input');
@@ -109,8 +99,6 @@ function processQuestion3(curTarget) {
   function unmarkCheckbox(checkbox) {
     checkbox.checked = false;
     question3State = question3State.filter(curCheckbox => curCheckbox !== checkbox);
-
-    $question3ValidCheckmark.style["visibility"] = "hidden";
   }
 
   function markCheckbox(checkbox) {
@@ -124,8 +112,6 @@ function processQuestion3(curTarget) {
     question3State.forEach((checkbox) => {
       checkbox.checked = true;
     });
-
-    if (question3State.length === 3) $question3ValidCheckmark.style["visibility"] = "initial";
   }
 }
 
