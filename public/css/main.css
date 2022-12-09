@@ -1,10 +1,8 @@
 ul,ol { list-style: none; }
 a img,:link img,:visited img, fieldset { border: none; }
 button, label { cursor: pointer; }
-html, body, h1, h2, h3, h4, div, p {
-	margin: 0;
-	padding: 0; 
-}
+html, body, h1, h2, h3, h4, div, p { margin: 0; padding: 0; }
+input:focus, textarea:focus, select:focus{ outline: none; }
 
 /* ******************************************************************************** */
 /* Full screen */
@@ -156,6 +154,39 @@ input[type="checkbox"] {
 }
 
 
+/* ------------------------------------------------------------ */
+/* full screen thankyou */
+/* ------------------------------------------------------------ */
+
+.clipboard-cta {
+  margin-top: 20%;
+  font-size: 20px;
+}
+
+.clipboard {
+  height: 25px;
+  width: 25px;
+  color: green;
+}
+
+#clipboard-input {
+  width: 185px;
+  border-radius: 4px;
+  border: none;
+  height: 28px;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+#clipboard-btn {
+  height: 34px;
+  border-radius: 6px;
+  font-size: 12px;
+  width: 80px;
+  box-shadow: 3px 3px #f02fa3;
+}
+
+
 
 /* ******************************************************************************** */
 /* Half screen */
@@ -211,6 +242,15 @@ input[type="checkbox"] {
   
   .sub-question {
     width: 100%;
+  }
+
+  /* ------------------------------------------------------------ */
+  /* half screen thankyou */
+  /* ------------------------------------------------------------ */
+
+  .clipboard-cta {
+    margin-top: 50%;
+    font-size: 15px;
   }
 
   .input {
