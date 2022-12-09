@@ -24,13 +24,14 @@ h3 {
 }
 
 button {
+  position:relative;
   background-color: #F02FA3;
   border-radius: 10px;
   border: 2px solid #4E4343;
   color: #4E4343;
   font-size: 2em;
   font-weight: bold;
-  box-shadow: 6px 6px #F02FA3;
+  box-shadow: 5px 5px #F02FA3;
   height: 2em;
 }
 
@@ -183,7 +184,7 @@ input[type="checkbox"] {
   border-radius: 6px;
   font-size: 12px;
   width: 80px;
-  box-shadow: 3px 3px #f02fa3;
+  box-shadow: 5px 5px #f02fa3;
 }
 
 
@@ -267,6 +268,6 @@ input[type="checkbox"] {
   }
 
   button {
-    box-shadow: 4px 4px #F02FA3;
+    box-shadow: 5px 5px #F02FA3;
   }
 }

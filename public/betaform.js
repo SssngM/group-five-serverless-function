@@ -1,7 +1,7 @@
-
 // quetion1 Choose 2 Main Boxes
 
 let question1State = [];
+
 const $box1 = document.querySelector("#box1");
 const $box2 = document.querySelector("#box2");
 const $box3 = document.querySelector("#box3");
@@ -118,14 +118,11 @@ function processQuestion3(curTarget) {
 
 // Form submission
 
-const $button = document.querySelector("button");
 const $emailInput = document.querySelector("input[name=email]");
-
 $emailInput.addEventListener('keyup', () => validateForm());
 
+const $btn2 = document.querySelector(".btn2");
 const $validationMessage = document.querySelector("#validation-message");
-$button.addEventListener("mousedown", () => $button.style["box-shadow"] = "none" );
-$button.addEventListener("mouseup", () => $button.style["box-shadow"] = "10px 10px #F02FA3" );
 
 function validateForm() {
   const $emailValue = document.querySelector("input[name=email]").value;
@@ -135,10 +132,10 @@ function validateForm() {
       && question3State.length === 3
       && $emailValue !== '') {
     $validationMessage.style["display"] = "none";
-    $button.style["pointer-events"] = "inherit";
+    $btn2.style["pointer-events"] = "inherit";
   } else {
     $validationMessage.style["display"] = "inherit";
-    $button.style["pointer-events"] = "none";
+    $btn2.style["pointer-events"] = "none";
   }
 }
 
@@ -149,22 +146,3 @@ validateForm();
 const inputs = document.querySelectorAll('input');
 inputs.forEach(input => input.autocomplete = 'off');
 
-
-/* ******************************************************************************** */
-/* clipboard funtionality */
-/* ******************************************************************************** */
-
-function myFunction() {
-  const copyText = document.getElementById("clipboard-input");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
-  
-  const clipboardBtn = document.getElementById("clipboard-btn");
-  clipboardBtn.innerHTML = "Copied";
-}
-
-function outFunc() {
-  const clipboardBtn = document.getElementById("clipboard-btn");
-  clipboardBtn.innerHTML = "Copy URL";
-}
