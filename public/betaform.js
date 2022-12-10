@@ -45,97 +45,26 @@ function processQuestion1(evt) {
 }
 
 
-// question2 choose 3 checkboxes
-
-let question2State = [];
-const $section2 = document.querySelector("#section2");
-$section2.addEventListener("click", (evt) => processQuestion2(evt.target));
-
-function processQuestion2(curTarget) {
-  const checkbox = curTarget.closest('input');
-
-  if (checkbox) {
-    const isAlreadyChecked = question2State.some((curCheckbox) => curCheckbox === checkbox);
-    isAlreadyChecked ? unmarkCheckbox(checkbox) : markCheckbox(checkbox);
-
-    validateForm();
-  }
-
-  function unmarkCheckbox(checkbox) {
-    checkbox.checked = false;
-    question2State = question2State.filter(curCheckbox => curCheckbox !== checkbox);
-  }
-
-  function markCheckbox(checkbox) {
-    question2State.push(checkbox);
-
-    if (question2State.length > 3) {
-      const checkbox = question2State.shift();
-      checkbox.checked = false;
-    }
-
-    question2State.forEach((checkbox) => {
-      checkbox.checked = true;
-    });
-  }
-}
-
-// question3 choose 3 checkboxes
-
-let question3State = [];
-const $section3 = document.querySelector("#section3");
-$section3.addEventListener("click", (evt) => processQuestion3(evt.target));
-
-function processQuestion3(curTarget) {
-  const checkbox = curTarget.closest('input');
-
-  if (checkbox) {
-    const isAlreadyChecked = question3State.some((curCheckbox) => curCheckbox === checkbox);
-    isAlreadyChecked ? unmarkCheckbox(checkbox) : markCheckbox(checkbox);
-
-    validateForm();
-  }
-
-  function unmarkCheckbox(checkbox) {
-    checkbox.checked = false;
-    question3State = question3State.filter(curCheckbox => curCheckbox !== checkbox);
-  }
-
-  function markCheckbox(checkbox) {
-    question3State.push(checkbox);
-
-    if (question3State.length > 3) {
-      const checkbox = question3State.shift();
-      checkbox.checked = false;
-    }
-
-    question3State.forEach((checkbox) => {
-      checkbox.checked = true;
-    });
-  }
-}
-
-
 // Form submission
 
 const $emailInput = document.querySelector("input[name=email]");
 $emailInput.addEventListener('keyup', () => validateForm());
 
 const $btn2 = document.querySelector(".btn2");
+
+$btn2.style["pointer-events"] = "none";
+$btn2.addEventListener('click', () => validateForm());
+$btn2.addEventListener('touchdown', () => validateForm());
 const $validationMessage = document.querySelector("#validation-message");
 
 function validateForm() {
   const $emailValue = document.querySelector("input[name=email]").value;
 
-  if (question1State.length === 2
-      && question2State.length === 3
-      && question3State.length === 3
-      && $emailValue !== '') {
+  if (question1State.length === 2 && $emailValue !== '') {
     $validationMessage.style["display"] = "none";
     $btn2.style["pointer-events"] = "inherit";
   } else {
     $validationMessage.style["display"] = "inherit";
-    $btn2.style["pointer-events"] = "none";
   }
 }
 
