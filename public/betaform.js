@@ -131,10 +131,10 @@ function validateForm() {
       && question2State.length === 3
       && question3State.length === 3
       && $emailValue !== '') {
-    $validationMessage.style["display"] = "none";
+    $validationMessage.style["visibility"] = "hidden";
     $btn2.style["pointer-events"] = "inherit";
   } else {
-    $validationMessage.style["display"] = "inherit";
+    $validationMessage.style["visibility"] = "inherit";
     $btn2.style["pointer-events"] = "none";
   }
 }
