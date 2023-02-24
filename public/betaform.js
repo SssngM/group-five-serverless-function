@@ -69,10 +69,10 @@ function processQuestion2(curTarget) {
   function markCheckbox(checkbox) {
     question2State.push(checkbox);
 
-    if (question2State.length > 3) {
-      const checkbox = question2State.shift();
-      checkbox.checked = false;
-    }
+    // if (question2State.length > 3) {
+    //   const checkbox = question2State.shift();
+    //   checkbox.checked = false;
+    // }
 
     question2State.forEach((checkbox) => {
       checkbox.checked = true;
@@ -104,10 +104,10 @@ function processQuestion3(curTarget) {
   function markCheckbox(checkbox) {
     question3State.push(checkbox);
 
-    if (question3State.length > 3) {
-      const checkbox = question3State.shift();
-      checkbox.checked = false;
-    }
+    // if (question3State.length > 3) {
+    //   const checkbox = question3State.shift();
+    //   checkbox.checked = false;
+    // }
 
     question3State.forEach((checkbox) => {
       checkbox.checked = true;
@@ -127,10 +127,11 @@ const $validationMessage = document.querySelector("#validation-message");
 function validateForm() {
   const $emailValue = document.querySelector("input[name=email]").value;
 
-  if (question1State.length === 2
-      && question2State.length === 3
-      && question3State.length === 3
-      && $emailValue !== '') {
+  if (
+    // question1State.length === 2
+    //   && question2State.length === 3
+    //   && question3State.length === 3
+    $emailValue !== '') {
     $validationMessage.style["visibility"] = "hidden";
     $btn2.style["pointer-events"] = "inherit";
   } else {

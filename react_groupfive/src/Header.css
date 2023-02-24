@@ -1,0 +1,34 @@
+.Header {
+  height: 12vh;
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 4px solid var(--main_pink);
+  outline: 4px solid var(--main_light-blue);
+}
+
+.Header_logo-left {
+  margin: 6px 0 4px 2%;
+}
+
+.Header_question-icon {
+  margin: 20px;
+}
+
+.Header_logo-right {
+  margin: 0 3% 0;
+}
+
+@media (max-width: 600px) {
+  .Header_logo-left {
+    margin: 20px 20px 16px 2%;
+  }
+
+  .Header_question-icon {
+    margin: 24px;
+  }
+
+  .Header_logo-right {
+    margin: 18px 3% 14px;
+  }
+}
