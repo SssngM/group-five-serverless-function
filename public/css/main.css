@@ -28,7 +28,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1.3em;
+  font-size: 1.5em;
 }
 
 button {
@@ -125,7 +125,7 @@ button {
 
 .box-input-label {
   position: relative;
-  top: 3em;
+  top: 2.7em;
 }
 
 .box-input {
@@ -163,6 +163,7 @@ input[type="checkbox"] {
   width: 150px;
   height: 50px;
   margin-top: 2em;
+  /* font-size: 1.5em; */
   /* position: relative; */
   /* top: 6px; */
 }
@@ -231,7 +232,16 @@ input[type="checkbox"] {
   h3 {
     font-size: 1.2em;
   }
+  h4 {
+    font-size: 1.1em;
+  }
 
+
+  .box-input-label {
+    position: relative;
+    top: 3.2em;
+  }
+  
   .dynamic {
     display: block;
     flex-direction: column;
@@ -291,8 +301,8 @@ input[type="checkbox"] {
   }
 
   .btn2 {
-    width: 70px;
-    height: 40px;
+    width: 25vw;
+    height: 5vh;
     /* position: relative; */
     /* top: 0; */
     font-size: 20px;
