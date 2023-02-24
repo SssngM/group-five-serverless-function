@@ -27,6 +27,10 @@ h3 {
   font-weight: 100;
 }
 
+h4 {
+  font-size: 1.3em;
+}
+
 button {
   position:relative;
   background-color: #F02FA3;
@@ -108,9 +112,15 @@ button {
   gap: 10%;
 }
 
-.sub-question {
+.subquestion1 {
   width: 25%;
   max-width: 14em;
+}
+
+.subquestion {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .box-input-label {
@@ -122,7 +132,7 @@ button {
   cursor: pointer;
   height: 4em;
   border: 3px solid #F02FA3;
-  margin: 10px;
+  margin: 7%;
   border-radius: 5px;
 }
 
@@ -141,10 +151,12 @@ input[type="checkbox"] {
 }
 
 .custom-input {
-  height: 20px;
+  height: 1.5em;
+  width: 25vmin;
   border-radius: 4px;
   border: none;
   text-indent: 4px;
+  margin-top: 7%;
 }
 
 .btn2 {
@@ -157,9 +169,9 @@ input[type="checkbox"] {
 
 .validation-message {
   margin-top: 25px;
-  color: red;
+  color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 @media (min-width: 800px) {
@@ -256,8 +268,8 @@ input[type="checkbox"] {
     align-items: center;
   }
   
-  .sub-question {
-    width: 100%;
+  .subquestion1, .subquestion {
+    width: 55%;
   }
 
   .validation-message {
