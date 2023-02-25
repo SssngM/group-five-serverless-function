@@ -279,11 +279,15 @@ input[type="checkbox"] {
   }
   
   .subquestion1, .subquestion {
-    width: 55%;
+    width: 60%;
   }
 
   .validation-message {
     font-size: 14px;
+  }
+
+  .custom-input {
+    width: 50vmin;
   }
 
   /* ------------------------------------------------------------ */

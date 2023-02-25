@@ -118,7 +118,8 @@ function validateForm() {
   const $emailValue = document.querySelector("input[name=email]").value;
 
   if (
-    $emailValue !== '') {
+    $emailValue !== '' && $emailValue.includes('@')
+    ) {
     $validationMessage.style["visibility"] = "hidden";
     $btn2.style["pointer-events"] = "inherit";
   } else {
