@@ -94,6 +94,11 @@ button {
   margin-bottom: 2em;
 }
 
+.index-mainsl {
+  text-align: center;
+}
+
+
 #section1Checkmark { visibility: hidden; }
 #section2Checkmark { visibility: hidden; }
 #section3Checkmark { visibility: hidden; }
