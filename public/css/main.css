@@ -32,14 +32,14 @@ h4 {
 }
 
 button {
-  position:relative;
-  background-color: #F02FA3;
+  position: relative;
+  background-color: #393FD6;
   border-radius: 10px;
-  border: 2px solid #4E4343;
-  color: #4E4343;
+  border: 2px solid white;
+  color: white;
   font-size: 2em;
   font-weight: bold;
-  box-shadow: 5px 5px #F02FA3;
+  box-shadow: 5px 5px #f02fa3;
   height: 2em;
 }
 
@@ -217,6 +217,7 @@ input[type="checkbox"] {
   font-size: 12px;
   width: 80px;
   box-shadow: 5px 5px #f02fa3;
+  padding-top: 5px;
 }
 
 
