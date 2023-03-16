@@ -188,6 +188,11 @@ input[type="checkbox"] {
     display: flex;
     text-align: center;
   }
+
+  input[type="checkbox"] {
+    border-radius: 2px;
+    accent-color: #F02FA3;
+  }
 }
 
 
