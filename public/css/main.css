@@ -222,7 +222,6 @@ input[type="checkbox"] {
   font-size: 12px;
   width: 80px;
   box-shadow: 5px 5px #f02fa3;
-  padding-top: 5px;
 }
 
 
@@ -315,7 +314,7 @@ input[type="checkbox"] {
   }
 
   .btn2 {
-    width: 25vw;
+    width: 35vw;
     height: 5vh;
     /* position: relative; */
     /* top: 0; */
