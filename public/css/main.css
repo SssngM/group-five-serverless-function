@@ -217,12 +217,14 @@ input[type="checkbox"] {
 }
 
 #clipboard-btn {
-  height: 34px;
+  padding-top: 5px;
+  height: 35px;
   border-radius: 6px;
-  font-size: 12px;
-  width: 80px;
+  font-size: 0.8em;
+  width: 15vh;
   box-shadow: 5px 5px #f02fa3;
 }
+
 
 
 
