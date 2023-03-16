@@ -208,6 +208,7 @@ input[type="checkbox"] {
   height: 28px;
   font-size: 15px;
   margin-top: 10px;
+  border: 2px solid #F02FA3;
 }
 
 #clipboard-btn {
