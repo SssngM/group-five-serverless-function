@@ -10,7 +10,7 @@ input:focus, textarea:focus, select:focus{ outline: none; }
 
 body {
   color: #F02FA3;
-  background: #393FD6;
+  /* background: #393FD6; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -139,7 +139,9 @@ button {
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
+  accent-color: #F02FA3;
 }
+
 
 .input {
   height: 40px;
@@ -147,6 +149,7 @@ input[type="checkbox"] {
   border-radius: 6px;
   border: none;
   font-size: 20px;
+  border: 2px solid #F02FA3;
   text-indent: 6px;
 }
 
@@ -157,6 +160,7 @@ input[type="checkbox"] {
   border: none;
   text-indent: 4px;
   margin-top: 7%;
+  border: 1px solid #F02FA3;
 }
 
 .btn2 {
@@ -170,7 +174,6 @@ input[type="checkbox"] {
 
 .validation-message {
   margin-top: 25px;
-  color: white;
   font-weight: bold;
   font-size: 25px;
 }
