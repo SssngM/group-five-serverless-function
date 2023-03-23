@@ -18,8 +18,7 @@ def get_data():
 @app.route('/api/users', methods=['GET'])
 def get_users():
     users = session.query(User).all()
-    print(users)
-    serialized_users = [user.to_dict() for user in users]
+    serialized_users = [user.to_serialize() for user in users]
     return jsonify(serialized_users)
 
 if __name__ == '__main__':
