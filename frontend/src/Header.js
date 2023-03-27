@@ -7,7 +7,7 @@ import LogoRight from './logo-right.svg';
 
 function Header() {
   function callApiTest() {
-    httpRequest.get('/api/data')
+    httpRequest.get('/api/users')
       .then(response => {
         console.log('response.data...', response.data);
       })
