@@ -2,7 +2,7 @@ import "./Event.css";
 import UserOctagon from "./useroctagon.svg";
 import { useState } from "react";
 
-function Event({ event }) {
+function Event({ event, setModal }) {
   const joinIsDisabled = event.joinlist_count >= event.joinlist_max; 
   const waitlistIsDisabled = event.waitlist_count >= event.waitlist_max; 
   const [ joinBtnPressed, setJoinBtnPressed ] = useState(false);
@@ -39,7 +39,7 @@ function Event({ event }) {
       <div className="Event_buttons">
         <button
           onMouseDown={() => setJoinBtnPressed(true)}
-          onMouseUp={() => setJoinBtnPressed(false)}
+          onMouseUp={() => { setJoinBtnPressed(false); setModal(true) }}
           disabled={ joinIsDisabled }
           className={ `
             ${ joinIsDisabled ? "button-disabled" : "button-active" }

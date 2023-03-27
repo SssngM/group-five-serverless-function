@@ -1,11 +1,11 @@
 import Event from './Event';
 
 
-function EventList({ events }) {
+function EventList({ events, setModal }) {
   console.log('events...', events); 
   return (
     <div>
-      { events.map(event => <Event event={event} />) }
+      { events.map(event => <Event event={event} setModal={setModal} />) }
     </div>
   );
 }

@@ -13,7 +13,8 @@ function Header() {
       })
       .catch(error => {
         console.log(error);
-      });  }
+      });  
+  }
 
   return (
     <header onMouseDown={() => callApiTest()} className="Header">

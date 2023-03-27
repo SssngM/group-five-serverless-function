@@ -20,11 +20,12 @@ def get_users():
     serialized_users = [user.to_serialize() for user in users]
     return jsonify(serialized_users)
 
-@app.route('/phone')
+@app.route('/api/phone-intake')
 def phone(): 
-    # http://localhost:5000/phone?number=4158865021
+    # http://localhost:5000/api/phone-intake?number=4158865021
     to_number = request.args.get('number')
-    message_text = 'Hello from Twilio!'
+    message_text = 'Hello from Twilio!!'
+    print('to_number.......', to_number)
 
     message = twilio.messages.create(
         body=message_text,
