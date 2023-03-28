@@ -1,11 +1,9 @@
 
 # import the User model and any other necessary dependencies
-from config import db
 from models import User
 from sqlalchemy.exc import IntegrityError
-from config import app
+from config import app, db
 
-# create some dummy user data
 users = [
     {
         "name": "John Doe",
@@ -23,6 +21,7 @@ users = [
 
 # add the users to the database
 with app.app_context():
+    db.create_all() # this will be ignored if the tables are already created
     for user_data in users:
         user = User(**user_data)
         db.session.add(user)
