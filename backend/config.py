@@ -15,11 +15,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{USER}:{PSQL_PASSWORD}@lo
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-
 #### Twilio config ###########################################
 
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
 
 twilio = Client(account_sid, auth_token)
-

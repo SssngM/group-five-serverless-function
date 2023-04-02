@@ -1,6 +1,6 @@
 from flask import jsonify, request
 from flask_cors import CORS
-from models import User
+from models import User, Event
 from config import db, app, twilio
 
 session = db.session
@@ -19,6 +19,7 @@ def get_users():
     users = session.query(User).all()
     serialized_users = [user.to_serialize() for user in users]
     return jsonify(serialized_users)
+
 
 @app.route('/api/phone-intake')
 def phone(): 

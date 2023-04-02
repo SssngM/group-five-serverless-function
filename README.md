@@ -17,6 +17,15 @@ Backend:
   flask python
   $ flask run
 
+  to seed the database
+    $ python3 seed.py
+    comment or uncoment the following lines at the bottom of the file as needed 
+
+    with app.app_context():
+        # db.create_all()
+        # db.drop_all()
+        # seed_data()
+
 Frontend: 
   React javaScript
   $ npm start
