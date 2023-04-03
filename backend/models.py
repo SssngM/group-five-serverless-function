@@ -14,6 +14,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
+    user_type = db.Column(db.Enum('free', 'paid', 'admin', name='user_type'), default='basic')
     users_events = db.relationship('Event', secondary=users_events, back_populates='attendees')
 
     def __repr__(self):
@@ -33,13 +34,16 @@ class Event(db.Model):
     title = db.Column(db.String(100))
     event_type = db.Column(db.Enum('restaurant', 'networking', name='event_type'))
     address = db.Column(db.String(100))
-    url = db.Column(db.String(100))
+    restaurant_url = db.Column(db.String(5000))
+    google_maps_url = db.Column(db.String(5000))
     start_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     end_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     guest_max_count = db.Column(db.Integer, default=0)
     guest_min_count = db.Column(db.Integer)
     waitlist_max_count = db.Column(db.Integer)
     is_active = db.Column(db.Boolean)
+    host_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    host = db.relationship('User', backref='hosted_events')
     attendees = db.relationship('User', secondary=users_events, back_populates='users_events')
 
     def __repr__(self):
