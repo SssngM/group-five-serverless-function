@@ -18,6 +18,11 @@ Backend:
   $ flask run
 
   to seed the database
+
+    create the db in psql once
+    $ createdb group_five
+
+    then run
     $ python3 seed.py
     comment or uncoment the following lines at the bottom of the file as needed 
 
