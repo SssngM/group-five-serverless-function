@@ -14,6 +14,14 @@ def get_data():
     return jsonify(data)
 
 
+@app.route('/api/events', methods=['GET'])
+def get_events():
+    events = session.query(Event).all()
+    serialized_events = [event.to_serialize() for event in events]
+    print('serialized_events...', serialized_events)
+    return jsonify(serialized_events)
+
+
 @app.route('/api/users', methods=['GET'])
 def get_users():
     users = session.query(User).all()

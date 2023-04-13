@@ -3,8 +3,8 @@ import UserOctagon from "./useroctagon.svg";
 import { useState } from "react";
 
 function Event({ event, setModal }) {
-  const joinIsDisabled = event.joinlist_count >= event.joinlist_max; 
-  const waitlistIsDisabled = event.waitlist_count >= event.waitlist_max; 
+  const joinIsDisabled = event.attendees.length >= event.guest_max_count; 
+  const waitlistIsDisabled = event.waitlistees.length >= event.waitlist_max_count; 
   const [ joinBtnPressed, setJoinBtnPressed ] = useState(false);
   const [ waitlistBtnPressed, setWaitlistBtnPressed ] = useState(false);
 
@@ -18,20 +18,20 @@ function Event({ event, setModal }) {
         </div>
         <div className="Event_details-right">
           <div className="Event_user-count">
-            <h3>{ event.joinlist_count }</h3>
+            <h3>{ event.attendees.length }</h3>
             <h3>/</h3>
-            <h3>{ event.joinlist_max }</h3>
+            <h3>{ event.guest_max_count }</h3>
             <h3>
               <img src={ UserOctagon } className="Event_useroctagon" alt="user octagon" />
             </h3>
           </div>
           <div className="Event_date">
-            <h4>{ event.date }</h4>
+            <h4>{ event.formattedDate }</h4>
           </div>
           <div className="Event_time">
-            <h4>{ event.start_time }</h4>
+            <h4>{ event.formattedStartTime }</h4>
             <h4><span>-</span></h4>
-            <h4>{ event.end_time }</h4>
+            <h4>{ event.formattedEndTime }</h4>
           </div>
         </div>
       </div>
