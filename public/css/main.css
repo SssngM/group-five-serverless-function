@@ -10,7 +10,7 @@ input:focus, textarea:focus, select:focus{ outline: none; }
 
 body {
   color: #F02FA3;
-  background: #393FD6;
+  /* background: #393FD6; */
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -27,15 +27,19 @@ h3 {
   font-weight: 100;
 }
 
+h4 {
+  font-size: 1.5em;
+}
+
 button {
-  position:relative;
-  background-color: #F02FA3;
+  position: relative;
+  background-color: #393FD6;
   border-radius: 10px;
-  border: 2px solid #4E4343;
-  color: #4E4343;
+  border: 2px solid white;
+  color: white;
   font-size: 2em;
   font-weight: bold;
-  box-shadow: 5px 5px #F02FA3;
+  box-shadow: 5px 5px #f02fa3;
   height: 2em;
 }
 
@@ -90,6 +94,11 @@ button {
   margin-bottom: 2em;
 }
 
+.index-mainsl {
+  text-align: center;
+}
+
+
 #section1Checkmark { visibility: hidden; }
 #section2Checkmark { visibility: hidden; }
 #section3Checkmark { visibility: hidden; }
@@ -108,9 +117,15 @@ button {
   gap: 10%;
 }
 
-.sub-question {
+.subquestion1 {
   width: 25%;
   max-width: 14em;
+}
+
+.subquestion {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .box-input-label {
@@ -123,14 +138,16 @@ button {
   cursor: pointer;
   height: 4em;
   border: 3px solid #F02FA3;
-  margin: 10px;
+  margin: 7%;
   border-radius: 5px;
 }
 
 input[type="checkbox"] {
   width: 20px;
   height: 20px;
+  accent-color: #F02FA3;
 }
+
 
 .input {
   height: 40px;
@@ -138,29 +155,33 @@ input[type="checkbox"] {
   border-radius: 6px;
   border: none;
   font-size: 20px;
+  border: 2px solid #F02FA3;
   text-indent: 6px;
 }
 
 .custom-input {
-  height: 20px;
+  height: 1.5em;
+  width: 25vmin;
   border-radius: 4px;
   border: none;
   text-indent: 4px;
+  margin-top: 7%;
+  border: 1px solid #F02FA3;
 }
 
 .btn2 {
   width: 150px;
   height: 50px;
   margin-top: 2em;
+  /* font-size: 1.5em; */
   /* position: relative; */
   /* top: 6px; */
 }
 
 .validation-message {
   margin-top: 25px;
-  color: red;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 @media (min-width: 800px) {
@@ -193,15 +214,18 @@ input[type="checkbox"] {
   height: 28px;
   font-size: 15px;
   margin-top: 10px;
+  border: 2px solid #F02FA3;
 }
 
 #clipboard-btn {
-  height: 34px;
+  padding-top: 5px;
+  height: 35px;
   border-radius: 6px;
-  font-size: 12px;
-  width: 80px;
+  font-size: 0.7em;
+  width: 12vh;
   box-shadow: 5px 5px #f02fa3;
 }
+
 
 
 
@@ -220,7 +244,16 @@ input[type="checkbox"] {
   h3 {
     font-size: 1.2em;
   }
+  h4 {
+    font-size: 1.1em;
+  }
 
+
+  .box-input-label {
+    position: relative;
+    top: 3.2em;
+  }
+  
   .dynamic {
     display: block;
     flex-direction: column;
@@ -257,12 +290,16 @@ input[type="checkbox"] {
     align-items: center;
   }
   
-  .sub-question {
-    width: 100%;
+  .subquestion1, .subquestion {
+    width: 60%;
   }
 
   .validation-message {
     font-size: 14px;
+  }
+
+  .custom-input {
+    width: 50vmin;
   }
 
   /* ------------------------------------------------------------ */
@@ -280,8 +317,8 @@ input[type="checkbox"] {
   }
 
   .btn2 {
-    width: 70px;
-    height: 40px;
+    width: 35vw;
+    height: 5vh;
     /* position: relative; */
     /* top: 0; */
     font-size: 20px;
@@ -289,5 +326,10 @@ input[type="checkbox"] {
 
   button {
     box-shadow: 5px 5px #F02FA3;
+  }
+
+  input[type="checkbox"] {
+    border-radius: 2px;
+    accent-color: #F02FA3;
   }
 }

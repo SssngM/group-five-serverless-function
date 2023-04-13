@@ -1,0 +1,14 @@
+.phone-intake_form {
+  display: flex;  
+  flex-direction: column;
+}
+
+
+.phone-intake input {
+  padding: 8px;
+  border: 2px solid var(--border_gray);
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+

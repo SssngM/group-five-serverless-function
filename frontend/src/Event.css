@@ -1,0 +1,55 @@
+.Event {
+  max-width: 800px;
+  margin: 85px auto 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.Event_buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.Event_details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 2px solid var(--border_gray);
+  margin-right: 20px;
+}
+
+.Event_title {
+  font-size: 20px;
+}
+
+.Event_useroctagon {
+  height: 20px;
+  padding-left: 5px;
+}
+
+.Event_details-left {
+}
+
+.Event_details-right {
+}
+
+.Event_user-count {
+  display: flex;
+  font-size: 1.1em;
+  padding: 4px 0;
+}
+
+.Event_time {
+  display: flex;
+}
+
+.Event_time h4 span {
+  padding: 0 2px;
+}
+
+@media (max-width: 900px) {
+  .Event {
+    max-width: 80%;
+  }
+}

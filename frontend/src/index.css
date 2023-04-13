@@ -1,0 +1,103 @@
+:root {
+  --main_pink: #F02FA3;
+  --main_light-blue: rgba(57, 63, 214, 0.8);
+  --border_gray: rgba(72, 72, 72, 0.25);  
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ul,ol { list-style: none; }
+h1,h2,h3,h4,h5,h6,pre,code { font-size: 1em; }
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,dl,dt,dd, figure, figcaption {
+	margin: 0;
+	padding: 0; }
+a img,:link img,:visited img, fieldset { border: none; }
+address { font-style: normal; }
+header, section, article, nav, footer, hgroup, details, summary, figure, main { display: block; }
+mark {
+	color: inherit;
+	background: transparent; }
+abbr { border: none; }
+summary::-webkit-details-marker { display: none; }
+
+h2 {
+  font-size: 1.4em;
+  margin-top: 12px
+}
+
+h3 {
+  font-size: 1em;
+  margin-top: 4px
+}
+
+h4 {
+  font-size: 0.8em;
+  margin-top: 4px
+}
+
+button {
+  background: var(--main_pink);
+  color: var(--main_light-blue);
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 6px;
+  margin: 4px;
+  border-top: none;
+  border-right: 3px solid;
+  border-bottom: 4px solid;
+  border-left: none;
+}
+
+.button-disabled {
+  opacity: 0.3; 
+}
+
+.button-active {
+  cursor: pointer;
+}
+
+.btn-pressed {
+  border-right: none;
+  border-bottom: none;
+  /* margin-right: 3px; */
+  /* margin-bottom: 4px; */
+  transform: translateY(3px);
+  transform: translateX(4px);
+}
+
+.btn-notpressed {
+  border-right: 3px solid;
+  border-bottom: 4px solid;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 80px;
+  border-radius: 5px;
+}
