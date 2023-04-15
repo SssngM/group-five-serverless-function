@@ -36,7 +36,10 @@ function PhoneIntake({ setModal }) {
             // value={ '4158865021' }
             value={ phoneNumber }
           />
-          <button className="button-active" type="submit">Submit</button>
+          <div>
+            <button className="button-active" type="submit">Submit</button>
+            <button className="button-active" onClick={() => setModal(false)}>Cancel</button>
+          </div>
         </form>
       </div>
     </div>

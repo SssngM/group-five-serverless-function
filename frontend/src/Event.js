@@ -3,8 +3,12 @@ import UserOctagon from "./useroctagon.svg";
 import { useState } from "react";
 
 function Event({ event, setModal }) {
-  const joinIsDisabled = event.attendees.length >= event.guest_max_count; 
-  const waitlistIsDisabled = event.waitlistees.length >= event.waitlist_max_count; 
+  const guestListIsFull = event.attendees.length >= event.guest_max_count;
+  const waitlistIsFull = event.waitlistees.length >= event.waitlist_max_count;
+
+  const joinIsDisabled = guestListIsFull;
+  const waitlistIsDisabled = !guestListIsFull || waitlistIsFull;
+
   const [ joinBtnPressed, setJoinBtnPressed ] = useState(false);
   const [ waitlistBtnPressed, setWaitlistBtnPressed ] = useState(false);
 
