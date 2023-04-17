@@ -17,7 +17,7 @@ class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), nullable=False)
+    name = db.Column(db.String(120))
     phone_number = db.Column(db.String(20), nullable=False)
     user_type = db.Column(db.Enum('free', 'paid', 'admin', name='user_type'), default='basic')
     users_guestlists = db.relationship('Event', secondary=users_guestlists, back_populates='attendees')

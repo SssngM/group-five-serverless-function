@@ -3,7 +3,7 @@ import './PhoneIntake.css';
 import httpRequest from './utils/url-config';
 
 function PhoneIntake({ setModal }) {
-  const [ phoneNumber, setPhoneNumber ] = useState('');
+  const [ phoneNumber, setPhoneNumber ] = useState('4158865021');
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -33,7 +33,6 @@ function PhoneIntake({ setModal }) {
             id="phoneInput"
             type="text"
             onChange={ handleChange }
-            // value={ '4158865021' }
             value={ phoneNumber }
           />
           <div>
