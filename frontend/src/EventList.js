@@ -1,8 +1,60 @@
 import Event from './Event';
+import { useEffect, useState } from 'react';
+import httpRequest from './utils/url-config';
+
+// function EventList({ events, setModal }) {
+function EventList({ setModal }) {
+  const [ events, setEvents ] = useState([]);
+
+  useEffect(() => {
+    httpRequest.get(`/api/events`)
+      .then(response => {
+        console.log('response.data...', response.data);
+        setEvents(response.data);
+        formatDate(response.data);
+      })
+      .catch(error => {
+        console.log('error : ', error);
+      });  
+  }, []);
+
+  function formatDate(events) {
+    events = events.map(event => {
+      const { start_time, end_time } = event;
+      return {
+        ...event,
+        formattedDate: getDateString(start_time),
+        formattedStartTime: getTimeString(start_time),
+        formattedEndTime: getTimeString(end_time),
+      }
+    });
+
+    setEvents(events);
+  }
+
+  function getTimeString(date) {
+    const dateObj = new Date(date);
+    const config = {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true
+    }
+
+    return dateObj.toLocaleTimeString('en-US', config);
+  }
+
+  function getDateString(date) {
+    const dateObj = new Date(date);
+    const config = {
+      weekday: 'long',
+      month: 'numeric',
+      day: 'numeric',
+    };
+    const formattedDate = new Intl.DateTimeFormat('en-US', config).format(dateObj);
+    return formattedDate.replace(',', '');
+  }
 
 
-function EventList({ events, setModal }) {
-  console.log('events...', events); 
   return (
     <div>
       { events.map(event => <Event event={event} setModal={setModal} />) }
@@ -25,10 +77,9 @@ EventList.defaultProps = {
       status: 'pending',
       alcohol: true,
       joinlist_min: 4,
-      joinlist_max: 6,
+      guest_max_count: 6,
       joinlist_count: 4,
-      waitlist_min: 2, 
-      waitlist_max: 6, 
+      waitlist_max_count: 6, 
       waitlist_count: 0,
       visibility: 'public',
       map_url: 'https://www.google.com/maps/place/YH+-+BEIJING+%E9%A2%90%E5%92%8C%E5%8C%97%E4%BA%AC/@37.7721938,-122.431713,18z/data=!3m1!4b1!4m5!3m4!1s0x808580a6c62a9fe5:0xb54e25c0baa0f59b!8m2!3d37.7722255!4d-122.4306252'
@@ -46,10 +97,9 @@ EventList.defaultProps = {
       status: 'pending',
       alcohol: true,
       joinlist_min: 4,
-      joinlist_max: 6,
+      guest_max_count: 6,
       joinlist_count: 6,
-      waitlist_min: 2, 
-      waitlist_max: 6, 
+      waitlist_max_count: 6, 
       waitlist_count: 2,
       map_url: 'https://www.google.com/maps/place/YH+-+BEIJING+%E9%A2%90%E5%92%8C%E5%8C%97%E4%BA%AC/@37.7721938,-122.431713,18z/data=!3m1!4b1!4m5!3m4!1s0x808580a6c62a9fe5:0xb54e25c0baa0f59b!8m2!3d37.7722255!4d-122.4306252',
       visibility: 'public',
@@ -67,10 +117,9 @@ EventList.defaultProps = {
       status: 'pending',
       alcohol: true,
       joinlist_min: 4,
-      joinlist_max: 6,
+      guest_max_count: 6,
       joinlist_count: 6,
-      waitlist_min: 2, 
-      waitlist_max: 6, 
+      waitlist_max_count: 6, 
       waitlist_count: 6,
       map_url: 'https://www.google.com/maps/place/YH+-+BEIJING+%E9%A2%90%E5%92%8C%E5%8C%97%E4%BA%AC/@37.7721938,-122.431713,18z/data=!3m1!4b1!4m5!3m4!1s0x808580a6c62a9fe5:0xb54e25c0baa0f59b!8m2!3d37.7722255!4d-122.4306252',
       visibility: 'public',
