@@ -3,8 +3,8 @@ import UserOctagon from "./useroctagon.svg";
 import { useState } from "react";
 
 function Event({ event, setModal, setEvent, setListType }) {
-  const guestListIsFull = event.attendees.length >= event.guest_max_count;
-  const waitlistIsFull = event.waitlistees.length >= event.waitlist_max_count;
+  const guestListIsFull = event?.attendees?.length >= event?.guest_max_count;
+  const waitlistIsFull = event?.waitlistees?.length >= event?.waitlist_max_count;
 
   const joinIsDisabled = guestListIsFull;
   const waitlistIsDisabled = !guestListIsFull || waitlistIsFull;
@@ -12,11 +12,18 @@ function Event({ event, setModal, setEvent, setListType }) {
   const [ joinBtnPressed, setJoinBtnPressed ] = useState(false);
   const [ waitlistBtnPressed, setWaitlistBtnPressed ] = useState(false);
 
-  function onJoin() {
+  function joinGuestlist() {
     setJoinBtnPressed(false);
     setModal(true);
     setEvent(event);
     setListType('guestlist');
+  }
+
+  function joinWaitlist() {
+    setWaitlistBtnPressed(false)
+    setModal(true);
+    setEvent(event);
+    setListType('waitlist');
   }
 
   return (
@@ -53,7 +60,7 @@ function Event({ event, setModal, setEvent, setListType }) {
       <div className="Event_buttons">
         <button
           onMouseDown={() => setJoinBtnPressed(true)}
-          onMouseUp={() => onJoin()}
+          onMouseUp={() => joinGuestlist()}
           disabled={ joinIsDisabled }
           className={ `
             ${ joinIsDisabled ? "button-disabled" : "button-active" }
@@ -64,7 +71,7 @@ function Event({ event, setModal, setEvent, setListType }) {
         </button>
         <button
           onMouseDown={() => setWaitlistBtnPressed(true)}
-          onMouseUp={() => setWaitlistBtnPressed(false)}
+          onMouseUp={() => joinWaitlist()}
           disabled={ waitlistIsDisabled }
           className={ `
             ${ waitlistIsDisabled ? "button-disabled" : "button-active" }
