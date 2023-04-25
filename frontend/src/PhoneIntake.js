@@ -2,21 +2,33 @@ import { useState } from 'react';
 import './PhoneIntake.css';
 import httpRequest from './utils/url-config';
 
-function PhoneIntake({ setModal }) {
+function PhoneIntake({ setModal, event, listType, setEvents }) {
   const [ phoneNumber, setPhoneNumber ] = useState('4158865021');
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(`Submitted phone number: ${phoneNumber}`);
+  function handleSubmit(evt) {
+    evt.preventDefault();
 
-    httpRequest.get(`/api/phone-intake?number=${phoneNumber}`)
-      // http://localhost:5000/phone-intake?number=4158865021
+    const data = {
+      phone_number: phoneNumber,
+      event_id: event.id,
+    }
+
+    // needs to start loading spinner here
+    httpRequest.post(`/api/${listType}`, data)
       .then(response => {
-        console.log('response.data...', response.data);
+        // close loding spinner
         setModal(false);
+        setEvents(events => (events.map(curEvent => {
+          if (curEvent.id === event.id) {
+            return {...curEvent, attendees: response.data.attendees}
+          } 
+          return curEvent;
+        })));
       })
       .catch(error => {
-        console.log(error);
+        console.log('error:', error);
+        // close loding spinner
+        setModal(false);
       });  
   };
 

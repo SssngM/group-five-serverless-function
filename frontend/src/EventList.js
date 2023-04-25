@@ -1,10 +1,8 @@
 import Event from './Event';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import httpRequest from './utils/url-config';
 
-// function EventList({ events, setModal }) {
-function EventList({ setModal }) {
-  const [ events, setEvents ] = useState([]);
+function EventList({ setModal, setEvent, setListType, setEvents, events }) {
 
   useEffect(() => {
     httpRequest.get(`/api/events`)
@@ -57,10 +55,19 @@ function EventList({ setModal }) {
 
   return (
     <div>
-      { events.map(event => <Event event={event} setModal={setModal} />) }
+      { events.map(event => (
+        <Event
+          event={event}
+          setModal={setModal}
+          setEvent={setEvent} 
+          setListType={setListType}
+        />
+      ))}
     </div>
   );
 }
+
+
 
 EventList.defaultProps = {
   events : [

@@ -19,7 +19,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120))
     phone_number = db.Column(db.String(20), nullable=False)
-    user_type = db.Column(db.Enum('free', 'paid', 'admin', name='user_type'), default='basic')
+    user_type = db.Column(db.Enum('free', 'paid', 'admin', name='user_type'), default='free')
     users_guestlists = db.relationship('Event', secondary=users_guestlists, back_populates='attendees')
     users_waitlists = db.relationship('Event', secondary=users_waitlists, back_populates='waitlistees')
 
@@ -30,7 +30,8 @@ class User(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'phone_number': self.phone_number
+            'phone_number': self.phone_number,
+            'user_type': self.user_type
         }
     
 
