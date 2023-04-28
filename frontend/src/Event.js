@@ -2,9 +2,9 @@ import "./Event.css";
 import UserOctagon from "./useroctagon.svg";
 import { useState } from "react";
 
-function Event({ event, setModal }) {
-  const guestListIsFull = event.attendees.length >= event.guest_max_count;
-  const waitlistIsFull = event.waitlistees.length >= event.waitlist_max_count;
+function Event({ event, setModal, setEvent, setListType }) {
+  const guestListIsFull = event?.attendees?.length >= event?.guest_max_count;
+  const waitlistIsFull = event?.waitlistees?.length >= event?.waitlist_max_count;
 
   const joinIsDisabled = guestListIsFull;
   const waitlistIsDisabled = !guestListIsFull || waitlistIsFull;
@@ -12,9 +12,22 @@ function Event({ event, setModal }) {
   const [ joinBtnPressed, setJoinBtnPressed ] = useState(false);
   const [ waitlistBtnPressed, setWaitlistBtnPressed ] = useState(false);
 
+  function joinGuestlist() {
+    setJoinBtnPressed(false);
+    setModal(true);
+    setEvent(event);
+    setListType('guestlist');
+  }
+
+  function joinWaitlist() {
+    setWaitlistBtnPressed(false)
+    setModal(true);
+    setEvent(event);
+    setListType('waitlist');
+  }
+
   return (
     <div className="Event">
-
       <div className="Event_details">
         <div className="Event_details-left">
             <h2>{ event.title }</h2>
@@ -26,7 +39,11 @@ function Event({ event, setModal }) {
             <h3>/</h3>
             <h3>{ event.guest_max_count }</h3>
             <h3>
-              <img src={ UserOctagon } className="Event_useroctagon" alt="user octagon" />
+              <img
+                src={ UserOctagon }
+                className="Event_useroctagon"
+                alt="user octagon" 
+              />
             </h3>
           </div>
           <div className="Event_date">
@@ -43,7 +60,7 @@ function Event({ event, setModal }) {
       <div className="Event_buttons">
         <button
           onMouseDown={() => setJoinBtnPressed(true)}
-          onMouseUp={() => { setJoinBtnPressed(false); setModal(true) }}
+          onMouseUp={() => joinGuestlist()}
           disabled={ joinIsDisabled }
           className={ `
             ${ joinIsDisabled ? "button-disabled" : "button-active" }
@@ -54,7 +71,7 @@ function Event({ event, setModal }) {
         </button>
         <button
           onMouseDown={() => setWaitlistBtnPressed(true)}
-          onMouseUp={() => setWaitlistBtnPressed(false)}
+          onMouseUp={() => joinWaitlist()}
           disabled={ waitlistIsDisabled }
           className={ `
             ${ waitlistIsDisabled ? "button-disabled" : "button-active" }
