@@ -17,6 +17,7 @@ function PhoneIntake({ setModal, event, listType, setEvents }) {
     httpRequest.post(`/api/${listType}`, data)
       .then(response => {
         // close loding spinner
+        console.log('response...', response) 
         setModal(false);
         setEvents(events => (events.map(curEvent => {
           if (curEvent.id === event.id) {

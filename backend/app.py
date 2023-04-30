@@ -4,12 +4,11 @@ from models import User, Event
 from config import db, app, twilio
 from datetime import datetime
 import pytz
+from messages import send_message, send_timed_message, get_replied_message
 
 session = db.session
-
 CORS(app)
 
-# Routes
 @app.route('/api/events', methods=['GET'])
 def get_events():
     events = session.query(Event).all()
@@ -24,6 +23,24 @@ def get_users():
     serialized_users = [user.to_serialize() for user in users]
     return jsonify(serialized_users)
 
+
+@app.route('/api/timed_message', methods=['GET'])
+def timed_message():
+    send_time = datetime(2023, 5, 1, 15, 52)
+    send_time_iso = send_time.isoformat() + 'Z'
+    twilio_phone_number = '+18775220854'
+    print('/api/timed_message')
+
+    message = twilio.messages.create(
+        to='4158865021',
+        from_=twilio_phone_number,
+        body='Hello, this is a scheduled message!',
+        send_at=send_time_iso,
+    )
+
+    return jsonify('success')
+
+
 @app.route('/api/guestlist', methods=['POST'])
 def add_user_to_guestlist():
     user_phone_number = request.json.get('phone_number')
@@ -33,24 +50,12 @@ def add_user_to_guestlist():
     if len(event.attendees) >= event.guest_max_count:
         return jsonify({'error': 'guestlist full'}), 400
     else:
-        twilio_phone_number = '+18775220854'
         message_body = "To confirm your number type: Ok"
-
-        twilio.messages.create(
-            body=message_body,
-            from_= twilio_phone_number,
-            to=user_phone_number
-        )
+        send_message(user_phone_number, message_body)
 
         # Wait for user to reply
         while True:
-            start_time = datetime.now(pytz.utc)
-
-            replies = twilio.messages.list(
-                from_=user_phone_number,
-                to=twilio_phone_number,
-                date_sent_after=start_time)
-
+            replies = get_replied_message(user_phone_number)
             
             if replies:
                 user_choice = replies[0].body
@@ -70,23 +75,13 @@ def add_user_to_guestlist():
                     event.attendees.append(user)
 
                     message_body = f'''You have successfully joined meeting!'''
-
-                    twilio.messages.create(
-                        body=message_body,
-                        from_= twilio_phone_number,
-                        to=user_phone_number
-                    )
+                    send_message(user_phone_number, message_body)
 
                     db.session.commit()
 
                 else:
-                    message_body = f'''Something went wrong. Please try again.'''
-
-                    twilio.messages.create(
-                        body=message_body,
-                        from_= twilio_phone_number,
-                        to=user_phone_number
-                    )
+                    message_body = f'''You have declined to join the meeting.'''
+                    send_message(user_phone_number, message_body)
                 break
 
     db.session.commit()
@@ -103,24 +98,12 @@ def add_user_to_waitlist():
     if len(event.waitlistees) >= event.waitlist_max_count:
         return jsonify({'error': 'waitlist full'}), 400
     else:
-        twilio_phone_number = '+18775220854'
         message_body = "To confirm your number type: Ok"
-
-        twilio.messages.create(
-            body=message_body,
-            from_= twilio_phone_number,
-            to=user_phone_number
-        )
+        send_message(user_phone_number, message_body)
 
         # Wait for user to reply
         while True:
-            start_time = datetime.now(pytz.utc)
-
-            replies = twilio.messages.list(
-                from_=user_phone_number,
-                to=twilio_phone_number,
-                date_sent_after=start_time)
-
+            replies = get_replied_message(user_phone_number)
             
             if replies:
                 user_choice = replies[0].body
@@ -143,23 +126,14 @@ def add_user_to_waitlist():
                     event.waitlistees.append(user)
 
                     message_body = f'''You have successfully joined the waitlist'''
-
-                    twilio.messages.create(
-                        body=message_body,
-                        from_= twilio_phone_number,
-                        to=user_phone_number
-                    )
+                    send_message(user_phone_number, message_body)
 
                     db.session.commit()
 
                 else:
-                    message_body = f'''Something went wrong. Please try again.'''
+                    message_body = f'''You have declined to join the meeting.'''
+                    send_message(user_phone_number, message_body)
 
-                    twilio.messages.create(
-                        body=message_body,
-                        from_= twilio_phone_number,
-                        to=user_phone_number
-                    )
                 break
 
     db.session.commit()
