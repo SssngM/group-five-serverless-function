@@ -1,8 +1,7 @@
-from config import twilio
+from config import twilio, twilio_phone_number
 from datetime import datetime
 import pytz
 
-twilio_phone_number = '+18775220854'
 messaging_service_sid = 'MG86a6a7efc804ce62932f387a5386362c'
 
 def send_message(user_phone_number, message_body):

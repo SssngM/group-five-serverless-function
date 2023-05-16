@@ -1,7 +1,7 @@
 from flask import jsonify, request, url_for
 from flask_cors import CORS
 from models import User, Event
-from config import db, app, twilio
+from config import db, app, twilio, twilio_phone_number, admin_phone_number
 from datetime import datetime
 from datetime import timedelta
 import pytz
@@ -11,6 +11,7 @@ from dateutil.parser import parse
 
 session = db.session
 CORS(app)
+
 
 @app.route('/api/events', methods=['GET'])
 def get_events():
@@ -29,7 +30,6 @@ def get_users():
 
 @app.route('/api/timed_message', methods=['GET'])
 def timed_message():
-    twilio_phone_number = '+18775220854'
     status_callback_url = request.url_root + url_for('webhook')
 
     message_body = 'Respond Yes'
@@ -37,7 +37,7 @@ def timed_message():
     twilio.messages.create(
         body=message_body,
         from_= twilio_phone_number,
-        to=4158865021,
+        to=admin_phone_number,
         status_callback=status_callback_url,
     )
 
@@ -65,7 +65,7 @@ def timed_message():
     # twilio.messages.create(
     #     body='Hello, this is a scheduled message! Please type Yes if you received it',
     #     from_= twilio_phone_number,
-    #     to='4158865021',
+    #     to=admin_phone_number,
     #     messaging_service_sid='MG86a6a7efc804ce62932f387a5386362c',
     #     send_at=start_time_utc,
     #     schedule_type='fixed',
@@ -77,7 +77,6 @@ def timed_message():
 
 @app.route('/api/create_event', methods=['POST'])
 def create_event():
-    twilio_phone_number = '+18775220854'
 
     title = request.json['title']
     address = request.json['address']
@@ -92,7 +91,7 @@ def create_event():
     waitlist_max_count = request.json['waitlist_max_count']
     host_phone_number = request.json['your_phone_number']
 
-    if host_phone_number != '4158865021':
+    if host_phone_number != admin_phone_number:
         return jsonify({'message': 'You are not authorized to create an event at this time'}), 200
     else:
         send_message(host_phone_number, "Respond 'Yes' to create this event, 'No' to cancel")
@@ -105,7 +104,7 @@ def create_event():
 
                 if user_choice.upper() == 'YES':
 
-                    host = User.query.filter_by(phone_number='4158865021').first()
+                    host = User.query.filter_by(phone_number=admin_phone_number).first()
 
                     if host:
                         new_event = Event(
@@ -159,8 +158,9 @@ def add_user_to_guestlist():
 
             if user_choice.upper() == 'OK':
 
-                user = User.query.filter_by(phone_number=user_phone_number).first()
-
+                user = User.query.filter_by(phone_number=user_phone_number.strip()).first()
+                print('user_phone_number.....', user_phone_number)
+                print('user.....', user)
                 if not user:
                     user = User(phone_number=user_phone_number)
 
@@ -172,21 +172,20 @@ def add_user_to_guestlist():
                 message_body = f'''You have successfully joined meeting!'''
                 send_message(user_phone_number, message_body)
 
-                timed_message_body = f'''You have joined the guestlist for meeting for {'title'} on Friday at 6:00pm. To confirm type Yes or No'''
+                # timed_message_body = f'''You have joined the guestlist for meeting for {'title'} on Friday at 6:00pm. To confirm type Yes or No'''
 
-                webhook_url = request.url_root + 'webhook'
+                # webhook_url = request.url_root + 'webhook'
 
-                send_time = datetime(2023, 4, 30, 19, 35)
-                twilio_phone_number = '+18775220854'
-                twilio.messages.create(
-                    body=timed_message_body,
-                    from_= twilio_phone_number,
-                    to=user_phone_number,
-                    messaging_service_sid=messaging_service_sid,
-                    send_at=send_time,
-                    schedule_type='fixed',
-                    status_callback=webhook_url,
-                )
+                # send_time = datetime(2023, 4, 30, 19, 35)
+                # twilio.messages.create(
+                #     body=timed_message_body,
+                #     from_= twilio_phone_number,
+                #     to=user_phone_number,
+                #     messaging_service_sid=messaging_service_sid,
+                #     send_at=send_time,
+                #     schedule_type='fixed',
+                #     status_callback=webhook_url,
+                # )
 
                 db.session.commit()
 
