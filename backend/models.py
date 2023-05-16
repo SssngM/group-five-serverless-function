@@ -43,12 +43,14 @@ class Event(db.Model):
     address = db.Column(db.String(100))
     restaurant_url = db.Column(db.String(5000))
     google_maps_url = db.Column(db.String(5000))
-    start_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    end_time = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    guest_max_count = db.Column(db.Integer, default=0)
+    start_time = db.Column(db.DateTime, nullable=False)
+    end_time = db.Column(db.DateTime)
+    first_reminder_alert_time = db.Column(db.DateTime)
+    second_reminder_alert_time = db.Column(db.DateTime)
+    guest_max_count = db.Column(db.Integer)
     guest_min_count = db.Column(db.Integer)
     waitlist_max_count = db.Column(db.Integer)
-    is_active = db.Column(db.Boolean)
+    is_active = db.Column(db.Boolean, default=True)
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     host = db.relationship('User', backref='hosted_events')
     attendees = db.relationship('User', secondary=users_guestlists, back_populates='users_guestlists')
@@ -73,8 +75,6 @@ class Event(db.Model):
             'guest_min_count': self.guest_min_count,
             'waitlist_max_count': self.waitlist_max_count,
             'is_active': self.is_active,
-            # 'host_id': self.host_id,
-            # 'host': self.host,
             'attendees': attendees_list,
             'waitlistees': waitlistees_list,
         }
