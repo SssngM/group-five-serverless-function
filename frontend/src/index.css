@@ -83,6 +83,7 @@ button {
 }
 
 .modal-overlay {
+  cursor: pointer;
   position: fixed;
   top: 0;
   left: 0;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './PhoneIntake.css';
 import httpRequest from './utils/url-config';
 
-function PhoneIntake({ setModal, event, listType, setEvents }) {
+function PhoneIntake({ setModal, event, listType, setEvents, setShowLoadingComponent }) {
   const [ phoneNumber, setPhoneNumber ] = useState('4158865021');
 
   function handleSubmit(evt) {
@@ -13,11 +13,10 @@ function PhoneIntake({ setModal, event, listType, setEvents }) {
       event_id: event.id,
     }
 
-    // needs to start loading spinner here
+    setShowLoadingComponent(true);
     httpRequest.post(`/api/${listType}`, data)
       .then(response => {
-        // close loding spinner
-        console.log('response...', response) 
+        setShowLoadingComponent(false);
         setModal(false);
         setEvents(events => (events.map(curEvent => {
           if (curEvent.id === event.id) {
@@ -28,7 +27,7 @@ function PhoneIntake({ setModal, event, listType, setEvents }) {
       })
       .catch(error => {
         console.log('error:', error);
-        // close loding spinner
+        setShowLoadingComponent(false);
         setModal(false);
       });  
   };

@@ -1,0 +1,11 @@
+.Question_modal-btn {
+  margin-top: 30px;
+}
+
+.Question_ul {
+  list-style-type: circle;
+}
+
+.Question_ul > li {
+  margin: 20px;
+}
