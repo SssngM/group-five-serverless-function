@@ -4,9 +4,12 @@ import httpRequest from './utils/url-config';
 
 function PhoneIntake({ setModal, event, listType, setEvents, setShowLoadingComponent }) {
   const [ phoneNumber, setPhoneNumber ] = useState('4158865021');
+  const [ submitBtnPressed, setSubmitBtnPressed ] = useState(false);
+  const [ cancelBtnPressed, setCancelBtnPressed ] = useState(false);
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
+
+  function handleSubmit() {
+    setSubmitBtnPressed(false);
 
     const data = {
       phone_number: phoneNumber,
@@ -32,6 +35,11 @@ function PhoneIntake({ setModal, event, listType, setEvents, setShowLoadingCompo
       });  
   };
 
+  function handleCancel() {
+    setCancelBtnPressed(false);
+    setModal(false);
+  }
+
   function handleChange(event) {
     setPhoneNumber(event.target.value);
   };
@@ -39,7 +47,7 @@ function PhoneIntake({ setModal, event, listType, setEvents, setShowLoadingCompo
   return (
     <div className="modal-overlay phone-intake">
       <div className="modal">
-        <form onSubmit={ handleSubmit } className="phone-intake_form">
+        <form className="phone-intake_form">
           <label htmlFor="phoneInput">Phone Number:</label>
           <input
             id="phoneInput"
@@ -48,8 +56,20 @@ function PhoneIntake({ setModal, event, listType, setEvents, setShowLoadingCompo
             value={ phoneNumber }
           />
           <div>
-            <button className="button-active" type="submit">Submit</button>
-            <button className="button-active" onClick={() => setModal(false)}>Cancel</button>
+            <button
+              className={`button-active ${submitBtnPressed ? "btn-pressed" : "btn-notpressed"}`}
+              onMouseDown={() => setSubmitBtnPressed(true)}
+              onMouseUp={() => handleSubmit()}
+            >
+              Submit
+            </button>
+            <button
+              className={`button-active ${cancelBtnPressed ? "btn-pressed" : "btn-notpressed"}`}
+              onMouseDown={() => setCancelBtnPressed(true)}
+              onMouseUp={() => handleCancel()}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>
