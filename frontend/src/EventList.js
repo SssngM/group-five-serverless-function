@@ -32,13 +32,14 @@ function EventList({ setModal, setEvent, setListType, setEvents, events }) {
 
   function getTimeString(date) {
     const dateObj = new Date(date);
-    const config = {
+    const localTimeString = dateObj.toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: 'numeric',
-      hour12: true
-    }
+      hour12: true,
+      timeZone: 'UTC' // Specify the timezone as UTC
+    });
 
-    return dateObj.toLocaleTimeString('en-US', config);
+    return localTimeString;
   }
 
   function getDateString(date) {
