@@ -6,12 +6,17 @@ from datetime import datetime
 from datetime import timedelta
 import pytz
 from messages import send_message, send_timed_message, get_replied_message
+from helpers import convert_datetime
 
 from dateutil.parser import parse
 
 session = db.session
 CORS(app)
 
+
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({'message': 'see app.py for routes'})
 
 @app.route('/api/events', methods=['GET'])
 def get_events():
@@ -159,20 +164,21 @@ def add_user_to_guestlist():
             if user_choice.upper() == 'OK':
 
                 user = User.query.filter_by(phone_number=user_phone_number.strip()).first()
-                print('user_phone_number.....', user_phone_number)
-                print('user.....', user)
                 if not user:
                     user = User(phone_number=user_phone_number)
 
                 if user in event.attendees:
-                    return jsonify({'error': 'user already joined guestlist'}), 400
+                    message_body = f'''You have already joined the event, see you at {event.address} on {convert_datetime(str(event.start_time))}'''
+                    send_message(user_phone_number, message_body)
+                    break
+
 
                 event.attendees.append(user)
 
-                message_body = f'''You have successfully joined meeting!'''
+                message_body = f'''You have successfully joined this event 😌, see you at {event.address} on {convert_datetime(str(event.start_time))}'''
                 send_message(user_phone_number, message_body)
 
-                # timed_message_body = f'''You have joined the guestlist for meeting for {'title'} on Friday at 6:00pm. To confirm type Yes or No'''
+                # timed_message_body = f'''You have joined the guestlist for event for {'title'} on Friday at 6:00pm. To confirm type Yes or No'''
 
                 # webhook_url = request.url_root + 'webhook'
 
@@ -190,7 +196,7 @@ def add_user_to_guestlist():
                 db.session.commit()
 
             else:
-                message_body = f'''You have declined to join the meeting.'''
+                message_body = f'''Your confirmation was not successful.😓 If you mistyped, please try again'''
                 send_message(user_phone_number, message_body)
             break
 
@@ -241,20 +247,24 @@ def add_user_to_waitlist():
                         user = User(phone_number=user_phone_number)
 
                     if user in event.attendees:
-                        return jsonify({'error': 'user already joined guestlist'}), 400
+                        message_body = f'''You have already joined this event!'''
+                        send_message(user_phone_number, message_body)
+                        break
 
                     if user in event.waitlistees:
-                        return jsonify({'error': 'user already joined waitlist'}), 400
+                        message_body = f'''You have already joined the waitlist! We will let you know if a seat for this event opens up.'''
+                        send_message(user_phone_number, message_body)
+                        break
 
                     event.waitlistees.append(user)
 
-                    message_body = f'''You have successfully joined the waitlist'''
+                    message_body = f'''You have successfully joined the waitlist 😌'''
                     send_message(user_phone_number, message_body)
 
                     db.session.commit()
 
                 else:
-                    message_body = f'''You have declined to join the meeting.'''
+                    message_body = f'''Your confirmation was not successful.😓 If you mistyped, please try again'''
                     send_message(user_phone_number, message_body)
 
                 break

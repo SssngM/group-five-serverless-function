@@ -5,7 +5,7 @@ import LogoLeft from './logo-left.svg';
 import QuestionIcon from './question-icon.svg';
 import LogoRight from './logo-right.svg';
 
-function Header({ setShowEventIntakeModal }) {
+function Header({ setShowEventIntakeModal, setShowQuestionModal }) {
   function callApiTest() {
     httpRequest.get('/api/users')
       .then(response => {
@@ -16,14 +16,20 @@ function Header({ setShowEventIntakeModal }) {
       });  
   }
 
-  function openEventIntakeModal () {
-    setShowEventIntakeModal(true);
+  function openModal(type) {
+    if (type === 'question') {
+      setShowQuestionModal(true);
+    }
+
+    if (type === 'eventForm') {
+      setShowEventIntakeModal(true);
+    }
   }
 
   return (
-    <header onMouseDown={() => openEventIntakeModal()} className="Header">
+    <header className="Header">
       <img src={ LogoLeft } className="Header_logo-left" alt="logo-left" />
-      <img src={ QuestionIcon } onMouseDown={() => openEventIntakeModal()} className="Header_question-icon" alt="logo-left" />
+      <img src={ QuestionIcon } onMouseDown={() => openModal('question') } className="Header_question-icon" alt="logo-left" />
       <img src={ LogoRight } className="Header_logo-right" alt="logo-left" />
     </header>
   );

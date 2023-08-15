@@ -12,7 +12,9 @@
 }
 
 .Header_question-icon {
-  margin: 20px;
+  width: 45px;
+  margin: 50px 24px 0;
+  cursor: pointer;
 }
 
 .Header_logo-right {
@@ -25,7 +27,7 @@
   }
 
   .Header_question-icon {
-    margin: 24px;
+    width: 25px;
   }
 
   .Header_logo-right {

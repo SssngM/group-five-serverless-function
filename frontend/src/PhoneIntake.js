@@ -2,22 +2,24 @@ import { useState } from 'react';
 import './PhoneIntake.css';
 import httpRequest from './utils/url-config';
 
-function PhoneIntake({ setModal, event, listType, setEvents }) {
+function PhoneIntake({ setModal, event, listType, setEvents, setShowLoadingComponent }) {
   const [ phoneNumber, setPhoneNumber ] = useState('4158865021');
+  const [ submitBtnPressed, setSubmitBtnPressed ] = useState(false);
+  const [ cancelBtnPressed, setCancelBtnPressed ] = useState(false);
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
+
+  function handleSubmit() {
+    setSubmitBtnPressed(false);
 
     const data = {
       phone_number: phoneNumber,
       event_id: event.id,
     }
 
-    // needs to start loading spinner here
+    setShowLoadingComponent(true);
     httpRequest.post(`/api/${listType}`, data)
       .then(response => {
-        // close loding spinner
-        console.log('response...', response) 
+        setShowLoadingComponent(false);
         setModal(false);
         setEvents(events => (events.map(curEvent => {
           if (curEvent.id === event.id) {
@@ -28,10 +30,15 @@ function PhoneIntake({ setModal, event, listType, setEvents }) {
       })
       .catch(error => {
         console.log('error:', error);
-        // close loding spinner
+        setShowLoadingComponent(false);
         setModal(false);
       });  
   };
+
+  function handleCancel() {
+    setCancelBtnPressed(false);
+    setModal(false);
+  }
 
   function handleChange(event) {
     setPhoneNumber(event.target.value);
@@ -40,7 +47,7 @@ function PhoneIntake({ setModal, event, listType, setEvents }) {
   return (
     <div className="modal-overlay phone-intake">
       <div className="modal">
-        <form onSubmit={ handleSubmit } className="phone-intake_form">
+        <form className="phone-intake_form">
           <label htmlFor="phoneInput">Phone Number:</label>
           <input
             id="phoneInput"
@@ -49,8 +56,20 @@ function PhoneIntake({ setModal, event, listType, setEvents }) {
             value={ phoneNumber }
           />
           <div>
-            <button className="button-active" type="submit">Submit</button>
-            <button className="button-active" onClick={() => setModal(false)}>Cancel</button>
+            <button
+              className={`button-active ${submitBtnPressed ? "btn-pressed" : "btn-notpressed"}`}
+              onMouseDown={() => setSubmitBtnPressed(true)}
+              onMouseUp={() => handleSubmit()}
+            >
+              Submit
+            </button>
+            <button
+              className={`button-active ${cancelBtnPressed ? "btn-pressed" : "btn-notpressed"}`}
+              onMouseDown={() => setCancelBtnPressed(true)}
+              onMouseUp={() => handleCancel()}
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>

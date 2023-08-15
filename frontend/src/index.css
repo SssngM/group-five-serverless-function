@@ -69,10 +69,11 @@ button {
 }
 
 .btn-pressed {
-  border-right: none;
-  border-bottom: none;
-  /* margin-right: 3px; */
-  /* margin-bottom: 4px; */
+  border-right: 1.5px solid;
+  border-bottom: 2px solid;
+  margin-right: 4.5px;
+  margin-bottom: 6px;
+  margin-left: 5px;
   transform: translateY(3px);
   transform: translateX(4px);
 }
@@ -83,6 +84,7 @@ button {
 }
 
 .modal-overlay {
+  cursor: pointer;
   position: fixed;
   top: 0;
   left: 0;
