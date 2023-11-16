@@ -1,5 +1,4 @@
 .Event {
-  max-width: 800px;
   margin: 85px auto 0;
   display: flex;
   justify-content: space-between;
@@ -29,6 +28,7 @@
 }
 
 .Event_details-left {
+
 }
 
 .Event_details-right {
@@ -50,6 +50,14 @@
 
 @media (max-width: 900px) {
   .Event {
-    max-width: 80%;
+    /* max-width: 80%; */
+  }
+
+  .Event_details-left {
+    font-size: 10px;
+  }
+
+  .Event_details-right {
+    font-size: 12px;
   }
 }

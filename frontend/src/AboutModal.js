@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import './QuestionModal.css';
+import './AboutModal.css';
 
-function QuestionModal({ setShowQuestionModal }) {
+function AboutModal({ setShowAboutModal }) {
 
   const [ closeBtnPressed, setCloseBtnPressed ] = useState(false);
 
   function handleCancel() {
     setCloseBtnPressed(false);
-    setShowQuestionModal(false);
+    setShowAboutModal(false);
   }
 
   return (
@@ -40,5 +40,6 @@ function QuestionModal({ setShowQuestionModal }) {
 }
 
 
-export default QuestionModal;
+export default AboutModal;
+
 

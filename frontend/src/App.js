@@ -2,15 +2,18 @@ import './App.css';
 import { useState } from 'react';
 import Header from './Header';
 import EventList from './EventList';
+import Footer from './Footer';
 import PhoneIntake from './PhoneIntake';
 import EventIntake from './EventIntake';
 import QuestionModal from './QuestionModal';
+import AboutModal from './AboutModal';
 import LoadingComponent from './LoadingComponent';
 
 function App() {
   const [ modal, setModal ] = useState(false);
   const [ showEventIntakeModal, setShowEventIntakeModal ] = useState(false);
   const [ showQuestionModal, setShowQuestionModal ] = useState(false);
+  const [ showAboutModal, setShowAboutModal ] = useState(false);
   const [ event, setEvent ] = useState({});
   const [ listType, setListType ] = useState('');
   const [ events, setEvents ] = useState([]);
@@ -34,6 +37,10 @@ function App() {
           setListType={setListType} 
           events={events}
         />
+        <Footer 
+          setShowAboutModal={setShowAboutModal} 
+        />
+
         { modal && <PhoneIntake
             event={event}
             setModal={setModal}
@@ -51,6 +58,11 @@ function App() {
         { showQuestionModal && <QuestionModal 
             setShowQuestionModal={setShowQuestionModal} 
           /> }
+
+        { showAboutModal && <AboutModal 
+            setShowAboutModal={setShowAboutModal} 
+          /> }
+
       </div>
     )
   }
