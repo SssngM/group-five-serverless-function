@@ -1,0 +1,22 @@
+.Footer {
+  max-width: 800px;
+  border-top: 2px solid var(--main_pink);
+  position: fixed;
+  bottom: 0;
+  width: 75vw;
+  height: 7vh;
+  background: #fff;
+}
+
+.Footer_about-image {
+  margin-top: 10px;
+  height: 4vh;
+  cursor: pointer;
+}
+
+
+@media (max-width: 900px) {
+  .Footer {
+    width: 85vw;
+  }
+}

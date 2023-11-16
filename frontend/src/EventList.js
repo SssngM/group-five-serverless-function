@@ -1,4 +1,5 @@
 import Event from './Event';
+import './EventList.css';
 import { useEffect } from 'react';
 import httpRequest from './utils/url-config';
 
@@ -55,7 +56,7 @@ function EventList({ setModal, setEvent, setListType, setEvents, events }) {
 
 
   return (
-    <div>
+    <div className="EventList">
       { events.map(event => (
         <Event
           event={event}

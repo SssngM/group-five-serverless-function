@@ -1,3 +1,7 @@
+.App {
+  margin: 10vh 20vw;
+}
+
 .App-header {
   min-height: 10vh;
   display: flex;
@@ -5,4 +9,10 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+@media (max-width: 900px) {
+  .App {
+    margin: 5vh 10vw;
+  }
 }
